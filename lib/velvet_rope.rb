@@ -27,9 +27,9 @@ module Redcarpet
         super(extensions)
       end
 
-      def postprocess(document)
+      def preprocess(document)
         if @extensions[:emoji]
-          document.gsub!(/:([a-z0-9\+\-_]+):/) do |match|
+          document.gsub!(/:([a-z0-9\+\-_]+):(?=([^`]*`[^`]*`)*[^`]*$)/) do |match|
             if Emoji.names.include?($1)
               emoji_template($1)
             else

@@ -12,6 +12,13 @@ describe Redcarpet::Render::VelvetRope do
       expected = '<p>This should be a <img alt="smiley" src="/images/emoji/smiley.png" style="vertical-align:middle" width="20" height="20" /> face.</p>' + "\n"
       markdown.render(content).should eq(expected)
     end
+
+    it 'does not render emoji inside of inline-code back ticks' do
+      content = 'This should be a :smiley: face. This should be a normal inline code sample `:fire:`.'
+
+      expected = '<p>This should be a <img alt="smiley" src="/images/emoji/smiley.png" style="vertical-align:middle" width="20" height="20" /> face. This should be a normal inline code sample <code>:fire:</code>.</p>' + "\n"
+      markdown.render(content).should eq(expected)
+    end
   end
 
   context 'with highlight_syntax option set to true' do
