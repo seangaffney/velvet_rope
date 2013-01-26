@@ -6,3 +6,8 @@
 
 * Gracefully handle unsupported lexers
 * Don't render emoji in inline code
+
+## v0.0.3
+
+* REVERT Don't render emoji in inline code - This didn't work when using the
+:filter_html option.
