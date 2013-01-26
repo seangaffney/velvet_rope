@@ -48,6 +48,19 @@ end
       expected = %{<p>This is an example of some Ruby code in a fenced code block:</p>\n<div class=\"highlight\"><pre><span class=\"k\">def</span> <span class=\"nf\">my_method</span>\n  <span class=\"s1\">&#39;my string&#39;</span><span class=\"o\">.</span><span class=\"n\">uppercase</span>\n<span class=\"k\">end</span>\n</pre></div>}
       markdown.render(content).should eq(expected)
     end
+
+    it "gracefully handles invalid lexers" do
+      content = <<-EOS
+```jquery
+def my_method
+  'my string'.uppercase
+end
+```
+      EOS
+
+      expected = %{<div class=\"highlight\"><pre><span class=\"n\">def</span> <span class=\"n\">my_method</span>\n  <span class=\"s\">&#39;my string&#39;</span><span class=\"p\">.</span><span class=\"n\">uppercase</span>\n<span class=\"k\">end</span>\n</pre></div>}
+      markdown.render(content).should eq(expected)
+    end
   end
 
 end

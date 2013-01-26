@@ -15,7 +15,11 @@ module Redcarpet
         # as it is a wrapper for the implementation written in C
         if @extensions[:highlight_syntax]
           self.class.send(:define_method, :block_code) do |code, language|
-            Pygments.highlight(code, :lexer => language)
+            if Pygments::Lexer.find_by_alias(language)
+              Pygments.highlight(code, :lexer => language)
+            else
+              Pygments.highlight(code)
+            end
           end
         end
 
