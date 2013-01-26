@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = "velvet_rope"
-  gem.version       = "0.0.1"
+  gem.version       = "0.0.2"
   gem.authors       = ["Sean Gaffney"]
   gem.email         = ["sean@seangaffney.cc"]
   gem.description   = %q{VelvetRope is a renderer to complement and enhance Redcarpet's default HTML renderer. It adds support for emoji and syntax-highlighting.}
