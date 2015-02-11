@@ -41,7 +41,7 @@ module Redcarpet
       end
 
       def emoji_template(emoji)
-        %(<img alt="#{emoji.name}" src="images/emoji/#{emoji.image_filename}" style="vertical-align:middle" width="20" height="20" />)
+        %(<img alt="#{emoji.name}" src="/images/emoji/#{emoji.image_filename}" style="vertical-align:middle" width="20" height="20" />)
       end
 
     end
