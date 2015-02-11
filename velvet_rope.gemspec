@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = "velvet_rope"
-  gem.version       = "0.0.3"
+  gem.version       = "0.0.4"
   gem.authors       = ["Sean Gaffney"]
   gem.email         = ["sean@seangaffney.cc"]
   gem.description   = %q{VelvetRope is a renderer to complement and enhance Redcarpet's default HTML renderer. It adds support for emoji and syntax-highlighting.}
@@ -16,9 +16,9 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_development_dependency "rspec"
+  gem.add_development_dependency "rspec", '~> 3.0'
 
-  gem.add_runtime_dependency "redcarpet"
-  gem.add_runtime_dependency "pygments.rb"
-  gem.add_runtime_dependency "gemoji"
+  gem.add_runtime_dependency "redcarpet", "~> 3.0"
+  gem.add_runtime_dependency "pygments.rb", "~> 0.6"
+  gem.add_runtime_dependency "gemoji", "~> 2.0"
 end

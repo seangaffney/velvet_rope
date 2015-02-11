@@ -30,8 +30,8 @@ module Redcarpet
       def postprocess(document)
         if @extensions[:emoji]
           document.gsub!(/:([a-z0-9\+\-_]+):/) do |match|
-            if Emoji.names.include?($1)
-              emoji_template($1)
+            if emoji = Emoji.find_by_alias($1)
+              emoji_template(emoji)
             else
               match
             end
@@ -40,8 +40,8 @@ module Redcarpet
         document
       end
 
-      def emoji_template(name)
-        '<img alt="' + name + '" src="' + "/images/emoji/#{name}.png" + '" style="vertical-align:middle" width="20" height="20" />'
+      def emoji_template(emoji)
+        %(<img alt="#{emoji.name}" src="images/emoji/#{emoji.image_filename}" style="vertical-align:middle" width="20" height="20" />)
       end
 
     end
